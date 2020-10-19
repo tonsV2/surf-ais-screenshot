@@ -5,10 +5,11 @@ import org.openqa.selenium.By
 import org.openqa.selenium.OutputType
 import org.openqa.selenium.remote.RemoteWebDriver
 import org.openqa.selenium.support.ui.WebDriverWait
+import java.io.Closeable
 import java.net.URL
 import java.time.Duration
 
-class AisPage {
+class AisPage : Closeable {
     private val seleniumUrl = "http://selenium:4444/wd/hub"
     private val timeOutInSeconds = Duration.ofSeconds(10)
 
@@ -44,12 +45,10 @@ class AisPage {
     }
 
     fun screenshot(): ByteArray {
-        // Not the recommended way to wait! But to save time this is how I'll wait for all ships to appear
-        Thread.sleep(10 * 1000)
         return driver.getScreenshotAs(OutputType.BYTES)
     }
 
-    fun close() {
+    override fun close() {
         driver.close()
         driver.quit()
     }

@@ -16,14 +16,16 @@ fun main() {
 
     val aisPage = AisPage()
 
-    aisPage.loadPage(aisUrl)
-    aisPage.acceptCookies()
-    aisPage.login()
+    aisPage.use { page ->
+        page.loadPage(aisUrl)
+        page.acceptCookies()
+        page.login()
 
-    val screenshot = aisPage.screenshot()
-    File(outputPath).writeBytes(screenshot)
-
-    aisPage.close()
+        // Not the recommended way to wait! But to save time this is how I'll wait for all ships to appear
+        Thread.sleep(10 * 1000)
+        val screenshot = page.screenshot()
+        File(outputPath).writeBytes(screenshot)
+    }
 
     exitProcess(0)
 }
