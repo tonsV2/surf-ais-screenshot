@@ -1,6 +1,6 @@
 package dk.surfstation.ais
 
-import dk.surfstation.ais.capabilities.chromeCapabilities
+import dk.surfstation.ais.Browser.CHROME
 import org.openqa.selenium.By
 import org.openqa.selenium.OutputType
 import org.openqa.selenium.remote.RemoteWebDriver
@@ -12,11 +12,10 @@ class AisPage {
     private val seleniumUrl = "http://selenium:4444/wd/hub"
     private val timeOutInSeconds = Duration.ofSeconds(10)
 
-    private lateinit var driver: RemoteWebDriver
+    private var driver: RemoteWebDriver
 
     init {
-
-        val capabilities = chromeCapabilities()
+        val capabilities = capabilities(CHROME)
         driver = RemoteWebDriver(URL(seleniumUrl), capabilities)
     }
 
