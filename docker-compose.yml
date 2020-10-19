@@ -1,0 +1,16 @@
+version: "3"
+services:
+  test:
+    image: tons/surf-ais-screenshot
+    build: .
+    volumes:
+      - ./data:/data
+    depends_on:
+      - selenium
+  selenium:
+#    image: selenium/standalone-opera
+# TODO: Use a specific version
+    image: selenium/standalone-chrome
+#    image: selenium/standalone-firefox
+    ports:
+      - 4444:4444
