@@ -9,8 +9,8 @@ import java.io.Closeable
 import java.net.URL
 import java.time.Duration
 
-class AisPage : Closeable {
-    private val seleniumUrl = "http://selenium:4444/wd/hub"
+class AisPage(seleniumHost: String) : Closeable {
+    private val seleniumUrl = "http://$seleniumHost:4444/wd/hub"
     private val timeOutInSeconds = Duration.ofSeconds(10)
 
     private var driver: RemoteWebDriver

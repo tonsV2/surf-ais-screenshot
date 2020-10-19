@@ -12,9 +12,11 @@ fun main() {
     val aisUsername = System.getenv("AIS_USER") ?: throw EnvironmentVariableNotFoundException("AIS_USER")
     val aisPassword = System.getenv("AIS_PASS") ?: throw EnvironmentVariableNotFoundException("AIS_PASS")
 
+    val seleniumHost = System.getenv("SELENIUM_HOST") ?: throw EnvironmentVariableNotFoundException("SELENIUM_HOST")
+
     val aisUrl = "https://web.ais.dk/aisweb/?u=$aisUsername&p=$aisPassword"
 
-    val aisPage = AisPage()
+    val aisPage = AisPage(seleniumHost)
 
     aisPage.use { page ->
         page.loadPage(aisUrl)

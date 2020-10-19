@@ -12,6 +12,7 @@ services:
   selenium:
     image: selenium/standalone-chrome:4.0.0
     environment:
+      SELENIUM_HOST: selenium
       SCREEN_WIDTH: 1920
       SCREEN_HEIGHT: 1080
     # TODO: Remove, don't expose if both services are running in Docker
