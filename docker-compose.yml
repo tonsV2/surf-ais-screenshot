@@ -4,6 +4,7 @@ services:
     image: tons/surf-ais-screenshot:1.0.0
     environment:
       SELENIUM_HOST: selenium
+      OUTPUT_PATH: /data/screenshot.png
     env_file:
       - .env
     volumes:

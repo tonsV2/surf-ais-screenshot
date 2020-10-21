@@ -7,12 +7,12 @@ fun main() {
     // Only for testing using docker compose. When deployed to Kubernetes Selenium Hub will be running indefinitely
     Thread.sleep(10 * 1000)
 
-    val outputPath = "./data/screenshot.png"
+    val outputPath = System.getenv("OUTPUT_PATH") ?: throw EnvironmentVariableNotFoundException("OUTPUT_PATH")
+
+    val seleniumHost = System.getenv("SELENIUM_HOST") ?: throw EnvironmentVariableNotFoundException("SELENIUM_HOST")
 
     val aisUsername = System.getenv("AIS_USER") ?: throw EnvironmentVariableNotFoundException("AIS_USER")
     val aisPassword = System.getenv("AIS_PASS") ?: throw EnvironmentVariableNotFoundException("AIS_PASS")
-
-    val seleniumHost = System.getenv("SELENIUM_HOST") ?: throw EnvironmentVariableNotFoundException("SELENIUM_HOST")
 
     val aisUrl = "https://web.ais.dk/aisweb/?u=$aisUsername&p=$aisPassword"
 
