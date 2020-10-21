@@ -31,7 +31,6 @@ class AisPage(seleniumHost: String) : Closeable {
 
         val acceptCookiesButton = driver.findElement(By.id("button-1037-btnEl"))
         acceptCookiesButton.click()
-        println("Cookies accepted")
     }
 
     fun login() {
@@ -41,7 +40,6 @@ class AisPage(seleniumHost: String) : Closeable {
 
         val loginButton = driver.findElement(By.id("login-button-id-btnWrap"))
         loginButton.click()
-        println("Login button clicked")
     }
 
     fun screenshot(): ByteArray {

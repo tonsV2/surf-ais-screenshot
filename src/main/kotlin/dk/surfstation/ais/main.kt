@@ -5,7 +5,7 @@ import kotlin.system.exitProcess
 
 fun main() {
     // Only for testing using docker compose. When deployed to Kubernetes Selenium Hub will be running indefinitely
-    Thread.sleep(10 * 1000)
+    //Thread.sleep(10 * 1000)
 
     val outputPath = System.getenv("OUTPUT_PATH") ?: throw EnvironmentVariableNotFoundException("OUTPUT_PATH")
 
@@ -18,17 +18,27 @@ fun main() {
 
     val aisPage = AisPage(seleniumHost)
 
-    aisPage.use { page ->
-        page.loadPage(aisUrl)
-        page.acceptCookies()
-        page.login()
+    try {
+        aisPage.use { page ->
+            page.loadPage(aisUrl)
+            println("Page loaded")
+            page.acceptCookies()
+            println("Cookies accepted")
+            page.login()
+            println("Login button clicked")
 
-        // Not the recommended way to wait! But to save time this is how I'll wait for all ships to appear
-        Thread.sleep(10 * 1000)
-        val screenshot = page.screenshot()
-        File(outputPath).writeBytes(screenshot)
+            // Not the recommended way to wait! But due to the nature of the AIS website and to save time this is how I'll wait for all ships to appear
+            Thread.sleep(10 * 1000)
+            val screenshot = page.screenshot()
+            File(outputPath).writeBytes(screenshot)
+            println("Screenshot saved")
+        }
+    } catch (e: Exception) {
+        e.printStackTrace()
+        exitProcess(1)
     }
 
+    // Force exit... https://stackoverflow.com/questions/60059290/java-program-is-not-terminating-when-using-selenium-webdriver
     exitProcess(0)
 }
 
