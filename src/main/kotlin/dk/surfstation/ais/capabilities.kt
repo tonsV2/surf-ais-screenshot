@@ -17,8 +17,7 @@ fun capabilities(browser: Browser): Capabilities = when (browser) {
 
 fun chromeCapabilities(): DesiredCapabilities {
     val options = ChromeOptions()
-//    options.setHeadless(true)
-    options.addArguments("--window-size=1600,1200")
+    options.addArguments("--window-size=1024,768")
 
     val capabilities = DesiredCapabilities()
     capabilities.setCapability(ChromeOptions.CAPABILITY, options)
@@ -28,7 +27,8 @@ fun chromeCapabilities(): DesiredCapabilities {
 
 fun firefoxCapabilities(): DesiredCapabilities {
     val options = FirefoxOptions()
-    options.addArguments("--window-size=1600,1200")
+    options.addArguments("--width=1024")
+    options.addArguments("--height=768")
 
     val capabilities = DesiredCapabilities()
     capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
