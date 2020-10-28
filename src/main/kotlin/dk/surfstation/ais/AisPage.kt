@@ -12,13 +12,8 @@ import java.time.Duration
 class AisPage(seleniumHost: String) : Closeable {
     private val seleniumUrl = "http://$seleniumHost:4444/wd/hub"
     private val timeOutInSeconds = Duration.ofSeconds(10)
-
-    private var driver: RemoteWebDriver
-
-    init {
-        val capabilities = capabilities(CHROME)
-        driver = RemoteWebDriver(URL(seleniumUrl), capabilities)
-    }
+    private val capabilities = capabilities(CHROME)
+    private val driver = RemoteWebDriver(URL(seleniumUrl), capabilities)
 
     fun loadPage(url: String) {
         driver.get(url)
