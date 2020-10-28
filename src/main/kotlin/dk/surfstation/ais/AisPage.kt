@@ -25,20 +25,24 @@ class AisPage(seleniumHost: String) : Closeable {
     }
 
     fun acceptCookies() {
+        val acceptCookiesButtonId = By.id("button-1037-btnEl")
+
         WebDriverWait(driver, timeOutInSeconds).until {
-            it.findElement(By.id("button-1037-btnEl"))
+            it.findElement(acceptCookiesButtonId)
         }
 
-        val acceptCookiesButton = driver.findElement(By.id("button-1037-btnEl"))
+        val acceptCookiesButton = driver.findElement(acceptCookiesButtonId)
         acceptCookiesButton.click()
     }
 
     fun login() {
+        val loginButtonId = By.id("login-button-id-btnWrap")
+
         WebDriverWait(driver, timeOutInSeconds).until {
-            it.findElement(By.id("login-button-id-btnWrap"))
+            it.findElement(loginButtonId)
         }
 
-        val loginButton = driver.findElement(By.id("login-button-id-btnWrap"))
+        val loginButton = driver.findElement(loginButtonId)
         loginButton.click()
     }
 
