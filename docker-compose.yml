@@ -1,7 +1,7 @@
 version: "3"
 services:
   screenshot:
-    image: tons/surf-ais-screenshot:1.0.0
+    image: tons/surf-ais-screenshot:1.2.0
     environment:
       SELENIUM_HOST: selenium
       OUTPUT_PATH: /data/screenshot.png
