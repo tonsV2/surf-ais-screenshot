@@ -28,7 +28,7 @@ fun main() {
 //            println("Login button clicked")
 
             // Not the recommended way to wait! But due to the nature of the AIS website and to save time this is how I'll wait for all ships to appear
-            Thread.sleep(10 * 1000)
+            Thread.sleep(20 * 1000)
             val screenshot = page.screenshot()
             File(outputPath).writeBytes(screenshot)
             println("Screenshot saved")
