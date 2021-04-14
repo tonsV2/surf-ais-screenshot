@@ -24,8 +24,8 @@ fun main() {
             println("Page loaded")
             page.acceptCookies()
             println("Cookies accepted")
-            page.login()
-            println("Login button clicked")
+//            page.login()
+//            println("Login button clicked")
 
             // Not the recommended way to wait! But due to the nature of the AIS website and to save time this is how I'll wait for all ships to appear
             Thread.sleep(10 * 1000)
